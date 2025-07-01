@@ -1,0 +1,333 @@
+# 아무거나 요정 프로젝트 통합 .gitignore
+
+# ========================================
+# ADMIN (React 관리자 웹)
+# ========================================
+
+# React Dependencies
+admin/node_modules/
+admin/.pnp
+admin/.pnp.js
+
+# React Production builds
+admin/build/
+admin/dist/
+
+# React Testing
+admin/coverage/
+
+# React Environment variables
+admin/.env
+admin/.env.local
+admin/.env.development.local
+admin/.env.test.local
+admin/.env.production.local
+
+# React Logs
+admin/npm-debug.log*
+admin/yarn-debug.log*
+admin/yarn-error.log*
+admin/lerna-debug.log*
+
+# React Runtime data
+admin/pids
+admin/*.pid
+admin/*.seed
+admin/*.pid.lock
+
+# React ESLint cache
+admin/.eslintcache
+
+# React Optional npm cache
+admin/.npm
+
+# React TypeScript cache
+admin/*.tsbuildinfo
+
+# React Package-lock conflicts
+admin/package-lock.json.orig
+
+# ========================================
+# BACK (Spring Boot 백엔드)
+# ========================================
+
+# Maven
+back/target/
+back/pom.xml.tag
+back/pom.xml.releaseBackup
+back/pom.xml.versionsBackup
+back/pom.xml.next
+back/release.properties
+back/dependency-reduced-pom.xml
+back/buildNumber.properties
+back/.mvn/timing.properties
+back/.mvn/wrapper/maven-wrapper.jar
+
+# Spring Boot Environment variables
+back/application-*.yml
+!back/application.yml
+!back/application-sample.yml
+
+# Spring Boot Logs
+back/*.log
+back/logs/
+back/spring.log
+
+# Spring Boot Database
+back/*.db
+back/*.sqlite
+back/*.sqlite3
+
+# Spring Boot Class files
+back/*.class
+
+# Spring Boot Package files
+back/*.jar
+back/*.war
+back/*.nar
+back/*.ear
+
+# Spring Boot JVM crash logs
+back/hs_err_pid*
+
+# Spring Boot specific
+back/HELP.md
+back/.gradle
+back/build/
+!back/gradle/wrapper/gradle-wrapper.jar
+!back/**/src/main/**/build/
+!back/**/src/test/**/build/
+
+# Spring Boot STS
+back/.apt_generated
+back/.classpath
+back/.factorypath
+back/.project
+back/.settings
+back/.springBeans
+back/.sts4-cache
+back/bin/
+!back/**/src/main/**/bin/
+!back/**/src/test/**/bin/
+
+# Spring Boot IntelliJ IDEA
+back/out/
+!back/**/src/main/**/out/
+!back/**/src/test/**/out/
+
+# Spring Boot NetBeans
+back/nbproject/private/
+back/nbbuild/
+back/dist/
+back/nbdist/
+back/.nb-gradle/
+
+# Spring Boot H2 Database files
+back/*.mv.db
+back/*.trace.db
+
+# Spring Boot Upload files
+back/uploads/
+back/files/
+back/images/
+
+# Spring Boot Application specific
+back/data/
+back/cache/
+
+# ========================================
+# FRONT (Flutter 모바일 앱)
+# ========================================
+
+# Flutter Build outputs
+front/build/
+front/android/app/build/
+front/ios/build/
+front/web/build/
+front/macos/build/
+front/windows/build/
+front/linux/build/
+
+# Flutter specific
+front/.dart_tool/
+front/.flutter-plugins
+front/.flutter-plugins-dependencies
+front/.packages
+front/.pub-cache/
+front/.pub/
+front/pubspec.lock
+
+# Flutter Android specific
+front/android/app/debug
+front/android/app/profile
+front/android/app/release
+front/android/gradle/
+front/android/.gradle/
+front/android/captures/
+front/android/gradlew
+front/android/gradlew.bat
+front/android/local.properties
+front/android/key.properties
+front/*.keystore
+front/*.jks
+
+# Flutter iOS specific
+front/ios/Pods/
+front/ios/Runner.xcworkspace/
+front/ios/Runner.xcodeproj/
+front/ios/.symlinks/
+front/ios/Flutter/flutter_export_environment.sh
+front/ios/Flutter/Generated.xcconfig
+front/ios/Flutter/ephemeral/
+
+# Flutter Web specific
+front/web/manifest.json
+
+# Flutter Windows specific
+front/windows/flutter/generated_plugin_registrant.cc
+front/windows/flutter/generated_plugin_registrant.h
+
+# Flutter macOS specific
+front/macos/Flutter/GeneratedPluginRegistrant.swift
+front/macos/Flutter/ephemeral/
+
+# Flutter Linux specific
+front/linux/flutter/generated_plugin_registrant.cc
+front/linux/flutter/generated_plugin_registrant.h
+
+# Flutter Symbols
+front/app.*.symbols
+
+# Flutter Obfuscation related
+front/app.*.map.json
+
+# Flutter Firebase
+front/.firebase/
+front/*firebase_options.dart
+
+# Flutter Native build outputs
+front/.cxx/
+front/.externalNativeBuild/
+
+# Flutter APK/IPA files
+front/*.apk
+front/*.ipa
+front/*.aab
+
+# Flutter Fastlane
+front/fastlane/report.xml
+front/fastlane/Preview.html
+front/fastlane/screenshots
+front/fastlane/test_output
+
+# Flutter Local SDK override
+front/bin/flutter
+
+# Flutter FVM (Flutter Version Management)
+front/.fvm/flutter_sdk
+
+# Flutter DevTools
+front/devtools_options.yaml
+
+# ========================================
+# 공통 (Common)
+# ========================================
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.iml
+*.iws
+*.ipr
+untitled.iml
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+.cache/
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+pids
+
+# Coverage
+coverage/
+.nyc_output/
+
+# ========================================
+# 프로젝트 특화 (Project Specific)
+# ========================================
+
+# Docker
+docker-compose.override.yml
+docker-compose.prod.yml
+
+# Database
+*.sql.bak
+*.sql.orig
+dump.sql
+backup.sql
+
+# Documentation generated files
+docs/_build/
+docs/.doctrees/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Archive files
+*.tar
+*.tar.gz
+*.zip
+*.rar
+*.7z
+
+# Local configuration overrides
+config.local.*
+settings.local.*
+
+# SSL certificates
+*.pem
+*.crt
+*.key
+*.p12
+*.pfx
+
+# Scripts outputs
+output/
+dist/
+build/
+
+# Misc
+TODO.md
+NOTES.md
+scratch.txt
