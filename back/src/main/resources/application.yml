@@ -25,36 +25,46 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        show_sql: false
+        use_sql_comments: true
         jdbc:
           batch_size: 20
         order_inserts: true
         order_updates: true
         generate_statistics: false
+        type:
+          descriptor:
+            sql: TRACE
     defer-datasource-initialization: true
+    open-in-view: false
   
-  sql:
-    init:
-      mode: always
-      data-locations: classpath:data.sql
-  
-  redis:
-    host: localhost
-    port: 6379
-    password: redis_password123
-    timeout: 2000ms
-    lettuce:
-      pool:
-        max-active: 8
-        max-idle: 8
-        min-idle: 0
+  cache:
+    redis:
+      host: localhost
+      port: 6379
+      password: redis_password123
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
 
 logging:
   level:
     com.claudetest.restaurantapi: INFO
+    com.claudetest.restaurantapi.config.RequestLoggingFilter: INFO
     org.springframework.security: WARN
-    org.hibernate.SQL: WARN
+    org.hibernate.SQL: OFF
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
     org.springframework.web: WARN
     root: WARN
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/api-requests.log
 
 jwt:
   secret: mySecretKey123456789012345678901234567890

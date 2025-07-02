@@ -39,15 +39,27 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    buildFeatures {
+        buildConfig true
+    }
+
     defaultConfig {
         applicationId "com.claudetest.restaurant_app"
         minSdkVersion 23
         targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        
+        // 에뮬레이터에서 네이버 지도 지원을 위한 설정
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            // 에뮬레이터에서 네이버 지도를 위한 디버그 설정
+            buildConfigField "Boolean", "ENABLE_MOCK_LOCATION", "true"
+        }
         release {
             signingConfig signingConfigs.debug
         }

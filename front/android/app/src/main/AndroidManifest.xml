@@ -46,7 +46,7 @@
             
         <!-- Naver Map API Key -->
         <meta-data
-            android:name="com.naver.maps.map.CLIENT_ID"
+            android:name="com.naver.maps.map.NCP_KEY_ID"
             android:value="dm11rcv5h0" />
     </application>
 </manifest>

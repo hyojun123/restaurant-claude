@@ -6,6 +6,7 @@ import '../providers/restaurant_provider.dart';
 import '../providers/auth_provider.dart';
 import '../widgets/category_grid.dart';
 import '../widgets/restaurant_list.dart';
+import '../widgets/naver_map_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -172,8 +173,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               
               // Naver 지도 섹션
-              Consumer<LocationProvider>(
-                builder: (context, locationProvider, child) {
+              Consumer2<LocationProvider, RestaurantProvider>(
+                builder: (context, locationProvider, restaurantProvider, child) {
                   return Container(
                     height: 300,
                     margin: const EdgeInsets.symmetric(horizontal: 0),
@@ -190,83 +191,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: locationProvider.currentPosition != null
-                          ? kIsWeb 
-                              ? Container(
-                                  color: Colors.blue[100],
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.map,
-                                        size: 60,
-                                        color: Colors.blue,
-                                      ),
-                                      const SizedBox(height: 10),
-                                      const Text(
-                                        '웹에서는 지도를 지원하지 않습니다',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.blue,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        '현재 위치: ${locationProvider.currentPosition!.latitude.toStringAsFixed(4)}, ${locationProvider.currentPosition!.longitude.toStringAsFixed(4)}',
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              : Container(
-                                  color: Colors.green[100],
-                                  child: const Center(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.smartphone,
-                                          size: 60,
-                                          color: Colors.green,
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(
-                                          '모바일에서 네이버 지도 표시',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text(
-                                          '실제 앱에서는 네이버 지도가 표시됩니다',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                          : Container(
-                              color: Colors.grey[200],
-                              child: const Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CircularProgressIndicator(),
-                                    SizedBox(height: 10),
-                                    Text('지도를 로딩 중...'),
-                                  ],
-                                ),
-                              ),
-                            ),
+                      child: NaverMapWidget(
+                        currentPosition: locationProvider.currentPosition,
+                        restaurants: restaurantProvider.restaurants,
+                      ),
                     ),
                   );
                 },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'screens/home_screen.dart';
 import 'screens/category_screen.dart';
 import 'screens/restaurant_detail_screen.dart';
@@ -15,7 +16,21 @@ import 'services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // AuthService.loadToken() 호출 제거 - AuthProvider에서 처리
+  
+  // 네이버 지도 초기화 (웹이 아닌 경우에만)
+  if (!kIsWeb) {
+    await FlutterNaverMap().init(
+        clientId: 'dm11rcv5h0',
+        onAuthFailed: (ex) => switch (ex) {
+          NQuotaExceededException(:final message) =>
+              print("사용량 초과 (message: $message)"),
+          NUnauthorizedClientException() ||
+          NClientUnspecifiedException() ||
+          NAnotherAuthFailedException() =>
+              print("인증 실패: $ex"),
+        });
+  }
+  
   runApp(const RestaurantApp());
 }
 
